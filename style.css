@@ -1,19 +1,19 @@
-body{
+/* body{
     margin: 0%;
     }
-    .container {
+.container {
         max-width: 1000px;
         margin: auto;
         
     }
-    #header {
+#header {
         background: red;
         max-width: 1000px;
         height: 100px;
         padding: 50px;
     
     }
-    .logo{
+.logo{
         width: 150px;
         background: white;
         font-size: 36px;
@@ -21,7 +21,7 @@ body{
         margin: 30px;
         text-align: center;
     }
-    .iklan{
+.iklan{
         width: 200px;
         background: white;
         font-size: 36px;
@@ -29,7 +29,7 @@ body{
         text-align: center;
         margin: 30px;
      } 
-    .menu {
+.menu {
         width: 1000px;
         z-index: 1000;
         background: rgba(241,231,103,1);
@@ -45,12 +45,12 @@ body{
         position: fixed;
         border-radius: 0px 20px 10px 10px;
     }
-    .menu ul li{
+.menu ul li{
         list-style-type: none;
         float: left;
         padding: 0px 20px 0px 10px;
     }
-    .menu ul li:hover {
+.menu ul li:hover {
         background: white;
         border-radius: 0px 40px 20px 30px; 
         text-align: center;
@@ -58,12 +58,12 @@ body{
         border-bottom: 2px solid black;
         border-right: 2px solid black;
     }
-    .menu ul li a {
+.menu ul li a {
 
         margin-left: 10px;
         text-decoration: none;
     } 
-    #sidebar{
+#sidebar{
 
         background: rgba(243,226,199,1);
         background: -moz-linear-gradient(left, rgba(243,226,199,1) 0%, rgba(193,158,103,1) 35%, rgba(233,212,179,1) 93%, rgba(233,212,179,1) 100%);
@@ -79,10 +79,10 @@ body{
         margin-top: 5px;
         margin-bottom: 5px;
     }
-    #content {
+#content {
         float: right;
         width: 800px;
-        height: 10000px;
+        height: auto;
         margin-top: 5px;
 
         background: rgba(179,220,237,1);
@@ -95,7 +95,7 @@ body{
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#29b8e5', GradientType=1 );
         margin-bottom: 5px;
     }
-    #footer{
+#footer{
         background:yellowgreen;
         clear: both;
         height: 100px;
@@ -113,15 +113,45 @@ body{
             width: 100%;
         }
     }
-  #title-sidebar {
+#titlesidebar {
       background: yellow;
       margin-top:-20px;
       height: 30px;
       text-transform: uppercase;
       text-align: center;
     }
-  #title-sidebar h5 {
+#titlesidebar h5 {
     padding: 5px;
 }
 
+.gambardetail {
 
+    background: black;
+    float: left;
+    height: 300px;
+    width: 300px;
+    margin-right: 5px; 
+    
+}
+.how {
+    width: 400px;
+    margin-right: 20px;
+    background: yellow;
+      margin-top:20px;
+      height: 30px;
+      text-transform: uppercase;
+      text-align: center;
+
+}
+.detail-product {
+    float: right;
+    margin-right: 20px;
+     
+
+}
+.batas {
+    margin-top: 300px;
+    padding: 3px;
+}
+
+ */

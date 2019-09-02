@@ -1,0 +1,197 @@
+<?php include_once "koneksi.php" ?>
+
+<html>
+<head>
+        <title>Tugas 1</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+            <div class="menu">
+                    <ul>
+                        <li><a href="home.php">Home</a></li>
+                        <li><a href="profil.php">Profil</a></li>
+                        <li><a href="product.php">Store</a></li>
+                        <li><a href="follow.php">Contact us</a></li>
+        
+                    </ul>
+        
+                </div> -->
+
+                <!-- <hr />
+
+  <!-- <div class="container purple topBotomBordersIn">
+  <a>HOME</a>
+  <a>ARTICLES</a>
+  <a>PORTFOLIO</a>
+  <a>ABOUT</a>
+  <a>CONTACT</a>
+</div> -->
+
+                <div id="header">
+            <div class="logo"> LOGO </div>
+            <div class="iklan"><marquee> IKLAN </marquee></div>
+
+        </div>
+        
+
+        <div id="sidebar">
+                     <!-- awal login -->
+                    <div id="titlesidebar">
+                        <h5> login</h5>
+                    </div>
+                    <div id="contentsidebar">
+                    <form method="POST" action="<?php $_SERVER['PHP_SELF']  ?>" target="_self" >
+                        <tr>
+                            <td><input name="username" type="text" placeholder="input user"></td>
+                        </tr>
+                        <tr>
+                            <td><input name="password" type="password" placeholder="input password"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="submitLogin"></td>
+                        </tr>
+
+                    </form>
+                        <?PHP
+                            if(isset($_POST['submitLogin'])){
+                                $vid =$_POST['username'];
+                                $vpassword = ($_POST['password']);
+
+                                session_set_cookie_params('3600');
+                                if(!isset($_SESSION)){
+                                    session_start();
+                                }
+                                    $cekuser = mysqli_query($koneksidb, "SELECT * FROM user WHERE id_user = '$vid' and password_user = '$vpassword' ");
+                                    $ada = mysqli_fetch_row($cekuser);
+                                    if($ada){
+                                        $_SESSION['userlogin']= $vid;
+                                        $_SESSION['namelogin']= $ada[1];
+                                        $_SESSION['levellogin']= $ada[3];
+                                        $_SESSION['gambarlogin']= $ada[4];
+                                        
+                                        header("location: admin/home.php");
+                                        exit;
+                                    }
+                                    else {
+                                        echo "password salah";
+                                    }
+                                
+                        ?>
+                                
+                            <?php } ?>
+                            <!-- akhir login -->
+                    </div>
+                    <div id="titlesidebar">
+                            <h5> Data Product</h5>
+                        </div>
+                        <div id="contentsidebar">
+                        <ol>
+                        <?php 
+                            $produk_show = mysqli_query($koneksidb, "SELECT * FROM produck");
+                            while($hs_show = mysqli_fetch_array($produk_show)) {
+
+                                $vkode = "$hs_show[kode]";
+                                $vname = "$hs_show[name_product]";
+                        ?>
+                    <li>
+                                <a href= 'viewstore.php?id= <?php echo "$vkode"; ?>'>
+                                    <?php echo "$vname"; ?>
+                                    </a>
+                    </li>
+                              <?php  } ?>
+                              </ol> 
+                        </div>
+                        <div id="titlesidebar">
+                                <h5> judul side bar</h5>
+                            </div>
+                            <div id="contentsidebar">
+                                <p>ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar </p>
+                            </div>
+                            <div id="titlesidebar">
+                                    <h5> judul side bar</h5>
+                                </div>
+                                <div id="contentsidebar">
+                                    <p>ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar ini adalah side bar </p>
+                                </div>
+            </div>
+
+
+  <div id="content">
+
+    <table style="border: 2px solid black;">
+            <tr>
+                <td>No </td>
+                <td>Kode Barang</td>
+                <td>Nama Barang</td>
+                <td>Harga Barang</td>
+                <td>Jumlah Barang</td>
+                <td>Deskripsi</td>
+            </tr>
+        <?php 
+                $urut = 0;
+            $produk_show = mysqli_query($koneksidb, "SELECT * FROM produck");
+            while($hs_show = mysqli_fetch_array($produk_show)) {
+                $urut ++;
+
+                $vkode = "$hs_show[kode]";
+                $vname = "$hs_show[name_product]";
+                $vprice = "$hs_show[price]";
+                    $vprice = number_format($vprice, 0, ",", ".");
+                $vquantity = "$hs_show[quantity]";
+                    $vquantity = number_format($vquantity, 0, ",", ".");
+                $vdeskripsi = "$hs_show[deskripsi]";
+        ?>
+        <form method="POST" action= "<?php $_SERVER['PHP_SELF']  ?>" target="_self" >
+            <tr>
+                <td> <?php echo "$urut" ?> </td>
+                <td> <?php echo "$vkode" ?>
+                    <input type="hidden" name="kode" value='<?php echo "$vkode" ?>' >
+                 </td>
+
+                <td> <?php echo "$vname" ?> </td>
+                <td>RP. <?php echo "$vprice" ?>,- </td>
+                <td> <?php echo "$vquantity" ?> </td>
+                <td> <?php echo "$vdeskripsi" ?> </td>
+                <td> <input type="submit" name="delete" value="HAPUS"> </td>
+                <td> <input type="submit" name="update" value="Update"> </td>
+            </tr>
+            </form>
+                
+
+
+        <?php } ?>
+
+    </table>
+
+            </div>
+
+            <div class="container-fluid bg-3 text-center">    
+  <h3>Some of my Work</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50px" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50px" alt="Image">
+    </div>
+    <div class="col-sm-3"> 
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50px" alt="Image">
+    </div>
+    <div class="col-sm-3">
+      <p>Some text..</p>
+      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:50px" alt="Image">
+    </div>
+  </div>
+</div>
+              
+                <div id="footer"> copy righ &copy M. Yusuf Avifiqri all right</div>
+        </div>
+    
+    </body>
+</html>
+
+
